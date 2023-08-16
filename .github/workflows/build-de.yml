@@ -1,3 +1,5 @@
+name: Run DE build
+
 on:
   push:
     branches: ["main"]
