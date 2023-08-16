@@ -1,6 +1,8 @@
-# EDA Decision Environment Container
+# EDA Decision Environment (DE) Container
 
 This repository contains a container image for running Ansible automation using the `ansible-rulebook` tool in a containerized fashion, and use it in the EDA Automation Controller. The image is designed to facilitate Event Driven Automation (EDA) with Ansible, providing the necessary components and dependencies to execute Ansible rulebooks seamlessly.
+
+This is my personal DE that I use and it is available on [quay.io/kubealex/eda-decision-env](quay.io/kubealex/eda-decision-env)
 
 ## Container Image
 
