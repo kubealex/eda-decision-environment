@@ -7,6 +7,8 @@ on:
     branches: ["main"]
     paths:
       - "./Containerfile"
+  workflow_dispatch:
+
 jobs:
   build:
     name: Build EDA DE and push image to Quay.
