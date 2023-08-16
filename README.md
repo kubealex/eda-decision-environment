@@ -46,4 +46,4 @@ Follow the steps below to use the container image for event-driven automation wi
    podman push <REGISTRY_HOST>/<YOUR_USERNAME>/eda-decision-environment
    ```
 
-3. **Configure it in your EDA Controller**
+You are now ready to use it as a standalone container or in EDA Controller.
