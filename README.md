@@ -32,10 +32,10 @@ Follow the steps below to use the container image for event-driven automation wi
 
 1. **Build the container image**:
 
-   To build the container image locally, execute the following command in the directory containing the provided `Containerfile`:
+   To build the container image locally, execute the following command in the directory containing the provided `ansible builder file`:
 
    ```bash
-   podman build -t eda-decision-environment .
+   ansible-builder build -t eda-decision-environment -f de-builder.yml
    ```
 
 2. **Push the container image**

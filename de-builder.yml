@@ -1,0 +1,49 @@
+---
+version: 3
+images:
+  base_image:
+    name: "registry.access.redhat.com/ubi9-minimal:latest"
+additional_build_files:
+  - src: ansible.cfg
+    dest: configs
+
+dependencies:
+  ansible_core:
+    package_pip: ansible-core
+  ansible_runner:
+    package_pip: ansible-runner
+
+  galaxy:
+    collections:
+      - ansible.eda
+      - dynatrace.event_driven_ansible
+      - kubealex.eda
+      - kubealex.general
+      - redhatinsights.eda
+  python:
+    - ansible-rulebook
+    - asyncio
+    - aiokafka
+    - aiohttp
+    - aiosignal
+    - aiomqtt
+    - kubernetes
+  system:
+    - java-17 [platform:rpm]
+    - python3.11 [platform:rpm]
+    - python3.11-devel [platform:rpm]
+    - gcc [platform:rpm]
+    - pkgconf-pkg-config [platform:rpm]
+    - systemd-devel [platform:rpm]
+  python_interpreter:
+    package_system: "python3.11"
+    python_path: "/usr/bin/python3.11"
+additional_build_steps:
+  append_final:
+    - RUN for dir in /home/runner /home/runner/.ansible /home/runner/.ansible/tmp /runner /home/runner /runner/env /runner/inventory /runner/project /runner/artifacts ; do mkdir -m 0775 -p $dir ; chmod -R g+rwx $dir ; chgrp -R root $dir ; done && for file in /home/runner/.ansible/galaxy_token /etc/passwd /etc/group ; do touch $file ; chmod g+rw $file ; chgrp root $file ; done
+    - RUN rm -rf /usr/bin/python3 && ln -s python3.11 /usr/bin/python3
+    - VOLUME /runner
+    - WORKDIR /runner
+    - ENV HOME=/home/runner
+options:
+  package_manager_path: /usr/bin/microdnf
